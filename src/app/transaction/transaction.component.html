@@ -1,0 +1,64 @@
+<form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+    <div *ngIf="apiResult.error" class="alert alert-danger mt-3" role="alert">
+        <div class="text-center">Transaction  Failed !!  Please  Check  Your  Details.</div>
+     </div>
+     <div *ngIf="apiResult.success" class="alert alert-success mt-3" role="alert">
+        <div class="text-center"> Transaction  Successfull  !!  Please  check  Your  Activity  Tab.</div>
+     </div>
+    
+    <div class="col-md-4 offset-md-4">
+        
+        <div class="form-group">
+            <label for="customerid" class="form-label mt-4">receiveraccountholdernumber</label>
+            <input type="text" class="form-control" id="receiveraccounholdernumber"  formControlName= "receiveraccountholdernumber" name="customerid" aria-describedby="customerid"
+                placeholder="Enter receiver account holder number" >
+        </div>
+        <div class="form-group">
+            <label for="senderbic" class="form-label mt-4">receiverbicC</label>
+            <input type="text" class="form-control" id="receiverbic" formControlName="receiverbic" name="senderbic" aria-describedby="senderbic"
+                placeholder="Enter receiverbic" >
+        </div>    
+        <div class="form-group">
+            <label for="bankname" class="form-label mt-4">Instution Name</label>
+            <input type="text" class="form-control" id="bankname"  name="bankname" aria-describedby="bankname"
+                placeholder="Bank Name" >
+        </div>
+        <div class="form-group">
+            <label for="transfertype" 
+            class="form-label mt-4">TransferType</label>
+                <select 
+                id="transfertype" 
+                name="transfertype"         
+                class="form-select">
+                    <option value="">select transfer type</option>
+                    <option 
+                    *ngFor="let c of transfertypes" 
+                    [value]="c.code" 
+                    >{{c.name}}
+                    </option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="currencyamount" class="form-label mt-4" name="amount" FormControlName="amount">amount</label>
+            <input type="number" class="form-control" id="currencyamount" name="currencyamount" aria-describedby="currencyamount"
+                placeholder="Enter Amount" >
+                <div class="form-group">
+                    <label for="Messagecode" class="form-label mt-4">Message code</label>
+                <br>
+                    <button class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Select  Message Code
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">beneficiary customer must be paid by cheque only.</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+        </div>   
+         <div class="form-group mt-3">
+            <button type="button" (click)="onSubmitdashboard()" class="btn btn-primary btn-danger ">Go to
+                Dashboard</button>
+            <button type="button" class="btn btn-primary">Send Transaction</button>
+        </div>
+    </div>
+</form>
