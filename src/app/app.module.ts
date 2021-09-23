@@ -14,6 +14,7 @@ import { HistoryComponent } from './history/history.component';
 import { HeaderComponent } from './header/header.component';
 import { NavitemsComponent } from './navitems/navitems.component';
 import { LoginService } from './services/loginservice';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { LoginService } from './services/loginservice';
     HistoryComponent,
     HeaderComponent,
     NavitemsComponent,
+    DropdownComponent,
     
   ],
   imports: [

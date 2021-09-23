@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+<!-- <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
     <div *ngIf="apiResult.error" class="alert alert-danger mt-3" role="alert">
         <div class="text-center">Transaction  Failed !!  Please  Check  Your  Details.</div>
      </div>
@@ -61,4 +61,80 @@
             <button type="button" class="btn btn-primary">Send Transaction</button>
         </div>
     </div>
+</form> -->
+<br>
+<form>
+    <div *ngIf="apiResult.error" class="alert alert-danger mt-3" role="alert">
+        <div class="text-center">Transaction  Failed !!  Please  Check  Your  Details.</div>
+     </div>
+     <div *ngIf="apiResult.success" class="alert alert-success mt-3" role="alert">
+        <div class="text-center"> Transaction  Successfull  !!  Please  check  Your  Activity  Tab.</div>
+     </div>
+    <div class="col-md-7 offset-md-3">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="recaccountno" class="form-label"><b>Receiver Account No</b></label>
+                        <input type="text" name="recaccountno" placeholder="Please enter receiver's account number"
+                            class="form-control" id="recaccno" aria-describedby="recHelp" [(ngModel)]="transferProfile.receiveraccountholdernumber">
+                        <div id="recHelp" class="form-text"></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="recaccname" class="form-label"><b>Receiver AccountHolder Name</b></label>
+                        <input name="recaccname" placeholder="Please enter receiver's name" type="text"
+                            class="form-control" id="recaccname" [(ngModel)]="transferProfile.receiveraccountholdername">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+               
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="amount" class="form-label"><b>Amount</b></label>
+                        <input name="amount" placeholder="Please enter the amount" type="text" class="form-control"
+                            id="amount" [(ngModel)]="transferProfile.inramount">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="msgcode" class="form-label"><b>Message Code</b></label>
+                        <app-dropdown [schema]="messageCodeDropdownSchema" (handleChange)="messagecodeSelected($event)"></app-dropdown>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="recbic" class="form-label"><b>Transfer type Code</b></label>
+                        <select id="transfertypecode" name="transfertypecode" class="form-select"
+                            aria-label="Default select example" 
+                            [(ngModel)]="transferProfile.transfertypecode.transfertypecode">
+                            <option value="">Select the transfer type code</option>
+                            <option value="B">B-Bank to Bank Tranfer</option>
+                            <option value="C">C-Customer to Customer Transfer</option>
+                        </select>
+                        <!-- <app-dropdown [schema]="TransferTypeDropdownSchema" (handleChange)="transfertypeSelected($event)"></app-dropdown> -->
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <button type="button" (click)="onSubmit()" class="btn btn-primary btn-danger ">Go to
+                        Dashboard</button>
+                </div>
+                <div class="col">
+                    <button type="submit" (click)="handleTransfer()"  class="btn btn-success btn-primary">Initiate Transaction</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+<!--{{transferProfile|json}}-->
+

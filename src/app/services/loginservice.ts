@@ -8,6 +8,7 @@ export class LoginService{
     customerid:any;
     private messageCodeList: any;
     id=1;
+    transferTypeList:any
     flag:any;
     userid:any
     commoncustomer:any;
@@ -31,8 +32,14 @@ export class LoginService{
       {
         return this.flag;
       }
+      getDataFromApi(url:string){
+        return this.http.get(url);
+    } 
       getmessageCodeList(){
         return this.messageCodeList;
     }
+    gettransferTypeList(){
+      return this.transferTypeList;
+  }
 
 }
