@@ -1,4 +1,6 @@
-.img{
-  width:200px;
-  height: 170px;
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
