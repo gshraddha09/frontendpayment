@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavitemsComponent } from './navitems/navitems.component';
 import { LoginService } from './services/loginservice';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     HeaderComponent,
     NavitemsComponent,
     DropdownComponent,
+    LogoutComponent,
     
   ],
   imports: [
@@ -48,7 +50,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
       path:"history",component:HistoryComponent
     },
     {
-path:"logout",component:LoginComponent
+path:"logout",component:LogoutComponent
     },
    
    

@@ -1,67 +1,3 @@
-<!-- <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
-    <div *ngIf="apiResult.error" class="alert alert-danger mt-3" role="alert">
-        <div class="text-center">Transaction  Failed !!  Please  Check  Your  Details.</div>
-     </div>
-     <div *ngIf="apiResult.success" class="alert alert-success mt-3" role="alert">
-        <div class="text-center"> Transaction  Successfull  !!  Please  check  Your  Activity  Tab.</div>
-     </div>
-    
-    <div class="col-md-4 offset-md-4">
-        
-        <div class="form-group">
-            <label for="customerid" class="form-label mt-4">receiveraccountholdernumber</label>
-            <input type="text" class="form-control" id="receiveraccounholdernumber"  formControlName= "receiveraccountholdernumber" name="customerid" aria-describedby="customerid"
-                placeholder="Enter receiver account holder number" >
-        </div>
-        <div class="form-group">
-            <label for="senderbic" class="form-label mt-4">receiverbicC</label>
-            <input type="text" class="form-control" id="receiverbic" formControlName="receiverbic" name="senderbic" aria-describedby="senderbic"
-                placeholder="Enter receiverbic" >
-        </div>    
-        <div class="form-group">
-            <label for="bankname" class="form-label mt-4">Instution Name</label>
-            <input type="text" class="form-control" id="bankname"  name="bankname" aria-describedby="bankname"
-                placeholder="Bank Name" >
-        </div>
-        <div class="form-group">
-            <label for="transfertype" 
-            class="form-label mt-4">TransferType</label>
-                <select 
-                id="transfertype" 
-                name="transfertype"         
-                class="form-select">
-                    <option value="">select transfer type</option>
-                    <option 
-                    *ngFor="let c of transfertypes" 
-                    [value]="c.code" 
-                    >{{c.name}}
-                    </option>
-                </select>
-        </div>
-        <div class="form-group">
-            <label for="currencyamount" class="form-label mt-4" name="amount" FormControlName="amount">amount</label>
-            <input type="number" class="form-control" id="currencyamount" name="currencyamount" aria-describedby="currencyamount"
-                placeholder="Enter Amount" >
-                <div class="form-group">
-                    <label for="Messagecode" class="form-label mt-4">Message code</label>
-                <br>
-                    <button class=" dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Select  Message Code
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">beneficiary customer must be paid by cheque only.</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-        </div>   
-         <div class="form-group mt-3">
-            <button type="button" (click)="onSubmitdashboard()" class="btn btn-primary btn-danger ">Go to
-                Dashboard</button>
-            <button type="button" class="btn btn-primary">Send Transaction</button>
-        </div>
-    </div>
-</form> -->
 <br>
 <form>
     <div *ngIf="apiResult.error" class="alert alert-danger mt-3" role="alert">
@@ -71,7 +7,7 @@
         <div class="text-center"> Transaction  Successfull  !!  Please  check  Your  Activity  Tab.</div>
      </div>
     <div class="col-md-7 offset-md-3">
-        
+       
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -82,6 +18,7 @@
                         <div id="recHelp" class="form-text"></div>
                     </div>
                 </div>
+                <br>
                 <div class="col">
                     <div class="mb-3">
                         <label for="recaccname" class="form-label"><b>Receiver AccountHolder Name</b></label>
@@ -92,7 +29,21 @@
             </div>
             <br>
             <div class="row">
-               
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="recbic" class="form-label"><b>Receiver BIC</b></label><br>
+                        <input name="recbic" size=50% placeholder="Enter Receiver's BIC" type="text" class="form-control"
+                            id="recbic" [(ngModel)]="transferProfile.receiverbic">
+                    </div><br>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="inst" class="form-label"><b>Bank Name</b></label><br>
+                        <input name="inst" size=50% placeholder="EnterBank name" type="text" class="form-control"
+                            id="inst" [(ngModel)]="transferProfile.instname" readonly>
+                    </div><br>
+                </div>
+               <div class="row">
                 <div class="col">
                     <div class="mb-3">
                         <label for="amount" class="form-label"><b>Amount</b></label>
@@ -100,8 +51,9 @@
                             id="amount" [(ngModel)]="transferProfile.inramount">
                     </div>
                 </div>
+                </div>
             </div>
-            <br>
+           
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -109,11 +61,12 @@
                         <app-dropdown [schema]="messageCodeDropdownSchema" (handleChange)="messagecodeSelected($event)"></app-dropdown>
                     </div>
                 </div>
+                <div class="row">
                 <div class="col">
                     <div class="mb-3">
                         <label for="recbic" class="form-label"><b>Transfer type Code</b></label>
                         <select id="transfertypecode" name="transfertypecode" class="form-select"
-                            aria-label="Default select example" 
+                            aria-label="Default select example"
                             [(ngModel)]="transferProfile.transfertypecode.transfertypecode">
                             <option value="">Select the transfer type code</option>
                             <option value="B">B-Bank to Bank Tranfer</option>
@@ -122,13 +75,11 @@
                         <!-- <app-dropdown [schema]="TransferTypeDropdownSchema" (handleChange)="transfertypeSelected($event)"></app-dropdown> -->
                     </div>
                 </div>
+                </div>
             </div>
             <br>
             <div class="row">
-                <div class="col">
-                    <button type="button" (click)="onSubmit()" class="btn btn-primary btn-danger ">Go to
-                        Dashboard</button>
-                </div>
+               
                 <div class="col">
                     <button type="submit" (click)="handleTransfer()"  class="btn btn-success btn-primary">Initiate Transaction</button>
                 </div>
@@ -137,4 +88,3 @@
     </div>
 </form>
 <!--{{transferProfile|json}}-->
-

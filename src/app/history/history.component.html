@@ -2,25 +2,23 @@
 <div class="container-fluid">
     <table class="table table-hover mt-5">
         <thead>
-            
+            <th>Transactionid</th>
             <th>Receiver Name</th>
-            <th>Receiveraccountnumber</th>
+            <th>Receiver AccountNumber</th>
             <th>Amount</th>
             <th>Date</th>
             <th>Status</th>
-            <th>Message</th>
+          
         </thead>
         <tbody>
             <tr  *ngFor="let t of history">
 
                 <td style="text-align: center;">{{t.transactionid}}</td>
-                
                 <td>{{t.receiveraccountholdername}}</td>
                 <td>{{t.receiveraccountholdernumber}}</td>
                 <td>{{t.inramount}}</td>
                 <td>{{t.transferdate}}</td>   
                 <td>{{t.status}}</td>
-                <td>{{t.Message}}</td>
     
     
             </tr>

@@ -26,6 +26,8 @@ export class TransactionComponent  {
     this.transferProfile={
       "receiveraccountholdernumber": '',
       "receiveraccountholdername": '',  
+      "receiverBIC":
+                    {  "bic":''},
       
       "inramount": '',
       "customerid": 
@@ -71,23 +73,6 @@ export class TransactionComponent  {
         console.log(err);
       })
 
-      this.datasvc.getDataFromApi('http://localhost:8080/transfertypes')
-      .subscribe((result: any) => {
-        this.transferTypeList = result.map((item: any) => {
-          return { name: item.transfertypecode, code: item.transfertypedescription };
-        });
-        this.TransferTypeDropdownSchema={
-          labelName:"",
-          selectedValue:"",
-          controlName:"transfertypecode",
-          options:this.transferTypeList,
-          defaultLabel:"Select transfertype code"
-        }
-      }, err => {
-        console.log(err);
-      })
-
-      
 
   }
   apiResult={
